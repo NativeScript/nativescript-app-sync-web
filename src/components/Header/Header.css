@@ -1,0 +1,8 @@
+
+@import '../variables.css';
+
+.brand {
+  color: lightness(+10%));
+  text-decoration: none;
+  font-size: 1.75em; /* ~28px */
+}
