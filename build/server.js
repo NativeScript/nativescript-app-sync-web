@@ -3753,7 +3753,7 @@ class ProductList extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
   render() {
     const self = this;
-    const tipText = '暂无数据';
+    const tipText = 'No data';
     return _jsx('div', {
       className: __WEBPACK_IMPORTED_MODULE_5__ProductList_css___default.a.root
     }, void 0, _jsx('div', {

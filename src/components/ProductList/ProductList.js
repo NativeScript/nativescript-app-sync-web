@@ -70,7 +70,7 @@ class ProductList extends Component {
 
   render() {
     const self = this;
-    const tipText = '暂无数据';
+    const tipText = 'No data';
     return (
       <div className={s.root}>
         <div className={s.container}>
