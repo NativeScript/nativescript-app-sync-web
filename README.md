@@ -21,7 +21,7 @@ $ vim ./src/config #change URL to production
 $ npm start
 ```
 
-## BUILD AND RUN IN PRODUCTION
+## BUILD AND RUN your clone
 
 ```shell
 $ cd /path/to/code-push-web
@@ -30,6 +30,17 @@ $ cd ./build
 $ npm install
 $ node ./server.js
 ```
+
+## BUILD AND RUN [IN PRODUCTION](https://nativescript-codepush-web.herokuapp.com)
+
+```shell
+$ cd /path/to/code-push-web
+$ npm run build -- --release
+```
+
+Now commit all files and `git push origin master`, because Heroku deploys upon changes to master.
+
+Check logs with `heroku logs --app nativescript-codepush-web --tail`.
 
 ## Based on [this awesome project](https://github.com/lisong/code-push-web)
 I had to decide to not officially fork it because of fi. all the Chinese characters
