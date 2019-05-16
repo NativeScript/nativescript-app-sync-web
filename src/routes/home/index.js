@@ -17,7 +17,7 @@ export default {
   path: '/',
 
   async action() {
-    const resp = await fetch(restApi.buildReadmeUrl(), {
+    const resp = await fetch(restApi.buildUsageUrl(), {
       method: 'get',
       timeout: 5000,
       headers: {

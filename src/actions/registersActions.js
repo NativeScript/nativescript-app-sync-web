@@ -37,7 +37,7 @@ export function registerCheckEmail(email) {
       if (_.get(data,'status') == "OK" && _.get(data, 'exists') == false) {
         dispatch(receiveRegisterCheckEmail(data));
       } else {
-        var message = `${email} 已经注册了，请更换其他邮箱注册`
+        var message = `${email} already exists`;
         if (_.get(data,'status') != "OK") {
           message = _.get(data, 'message');
         }

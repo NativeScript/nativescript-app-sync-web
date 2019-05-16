@@ -15,8 +15,7 @@ function StepDone() {
       <FormGroup style={{ textAlign:'center' }}>
         <div>
           <span>Congrats! You have successfully registered 😊</span>
-          <Link to="/login">Log in</Link>
-          <span>Go</span>
+          <Link to="/login" style="font-weight: bold">Log in</Link>
         </div>
       </FormGroup>
     </Form>

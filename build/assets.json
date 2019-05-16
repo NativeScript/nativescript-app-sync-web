@@ -6,7 +6,7 @@
     "js": "/assets/changePassword.5d826793.chunk.js"
   },
   "register": {
-    "js": "/assets/register.e356601e.chunk.js"
+    "js": "/assets/register.6c44ee89.chunk.js"
   },
   "apps": {
     "js": "/assets/apps.73888d72.chunk.js"
@@ -24,10 +24,10 @@
     "js": "/assets/login.c64e7c70.chunk.js"
   },
   "client": {
-    "js": "/assets/client.c15a8c56.js"
+    "js": "/assets/client.d5f657f4.js"
   },
   "vendor": {
-    "js": "/assets/vendor.dd9faacc.js"
+    "js": "/assets/vendor.25b46ffa.js"
   },
   "": {
     "png": "/assets/49d04bb9.png"

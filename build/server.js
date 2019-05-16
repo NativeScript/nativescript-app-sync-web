@@ -1132,6 +1132,10 @@ class RestApi {
     return `${this.baseURI}/README.md`;
   }
 
+  buildUsageUrl() {
+    return `${this.baseURI}/USAGE.md`;
+  }
+
   dealResponse(response) {
     var self = this;
     return response.text().then(text => {
@@ -2252,7 +2256,7 @@ function registerCheckEmail(email) {
       if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(data, 'status') == "OK" && __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(data, 'exists') == false) {
         dispatch(receiveRegisterCheckEmail(data));
       } else {
-        var message = `${email} 已经注册了，请更换其他邮箱注册`;
+        var message = `${email} already exists`;
         if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(data, 'status') != "OK") {
           message = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(data, 'message');
         }
@@ -3958,8 +3962,9 @@ var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" &
 
 
 var _ref = _jsx('div', {}, void 0, _jsx('span', {}, void 0, 'Congrats! You have successfully registered \uD83D\uDE0A'), _jsx(__WEBPACK_IMPORTED_MODULE_2__Link__["a" /* default */], {
-  to: '/login'
-}, void 0, 'Log in'), _jsx('span', {}, void 0, 'Go'));
+  to: '/login',
+  style: 'font-weight: bold'
+}, void 0, 'Log in'));
 
 function StepDone() {
   return _jsx(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Form"], {
@@ -5564,7 +5569,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
   action() {
     return _asyncToGenerator(function* () {
-      const resp = yield __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__core_fetch__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_3__network_RestApi__["a" /* default */].buildReadmeUrl(), {
+      const resp = yield __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__core_fetch__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_3__network_RestApi__["a" /* default */].buildUsageUrl(), {
         method: 'get',
         timeout: 5000,
         headers: {
