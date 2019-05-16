@@ -45,7 +45,7 @@ class StepOne extends Component {
     return (
       <Form style={{maxWidth: 350, marginLeft:"auto", marginRight: "auto"}}>
         <FormGroup>
-          <ControlLabel>邮箱地址</ControlLabel>
+          <ControlLabel>Email address</ControlLabel>
           <FormControl
             onChange={this.setInputEmail}
             value={this.props.email}

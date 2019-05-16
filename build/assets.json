@@ -6,7 +6,7 @@
     "js": "/assets/changePassword.5d826793.chunk.js"
   },
   "register": {
-    "js": "/assets/register.f2ae1c8a.chunk.js"
+    "js": "/assets/register.e356601e.chunk.js"
   },
   "apps": {
     "js": "/assets/apps.73888d72.chunk.js"
@@ -27,7 +27,7 @@
     "js": "/assets/client.c15a8c56.js"
   },
   "vendor": {
-    "js": "/assets/vendor.4bffb3b8.js"
+    "js": "/assets/vendor.dd9faacc.js"
   },
   "": {
     "png": "/assets/49d04bb9.png"

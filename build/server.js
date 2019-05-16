@@ -3992,7 +3992,7 @@ var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" &
 
 
 
-var _ref = _jsx(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["ControlLabel"], {}, void 0, '\u90AE\u7BB1\u5730\u5740');
+var _ref = _jsx(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["ControlLabel"], {}, void 0, 'Email address');
 
 var _ref2 = _jsx(__WEBPACK_IMPORTED_MODULE_4__Link__["a" /* default */], {
   to: '/login'
@@ -4071,7 +4071,7 @@ var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" &
 
 var _ref = _jsx(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["ControlLabel"], {}, void 0, 'Password');
 
-var _ref2 = _jsx(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["ControlLabel"], {}, void 0, '\u786E\u8BA4\u5BC6\u7801');
+var _ref2 = _jsx(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["ControlLabel"], {}, void 0, 'Confirm password');
 
 class StepThree extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 

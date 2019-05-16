@@ -86,7 +86,7 @@ class StepThree extends Component {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>确认密码</ControlLabel>
+          <ControlLabel>Confirm password</ControlLabel>
           <FormControl
             onChange={this.setInputPasswordConfirm}
             onBlur={()=>this.setState({field2: true})}
