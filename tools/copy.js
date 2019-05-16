@@ -25,10 +25,12 @@ async function copy() {
       engines: pkg.engines,
       dependencies: pkg.dependencies,
       scripts: {
-        start: 'node server.js'
+        start: 'node server.js',
       },
     }, null, 2)),
     copyFile('LICENSE.txt', 'build/LICENSE.txt'),
+    copyFile('README.md', 'build/public/README.md'),
+    copyFile('USAGE.md', 'build/public/USAGE.md'),
     copyDir('public', 'build/public'),
     copyDir('node_modules/bootstrap/dist/css', 'build/public/css'),
     copyDir('node_modules/bootstrap/dist/fonts', 'build/public/fonts'),
