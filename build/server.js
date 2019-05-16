@@ -1132,10 +1132,6 @@ class RestApi {
     return `${this.baseURI}/README.md`;
   }
 
-  buildUsageUrl() {
-    return `${this.baseURI}/USAGE.md`;
-  }
-
   dealResponse(response) {
     var self = this;
     return response.text().then(text => {
@@ -5569,7 +5565,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
   action() {
     return _asyncToGenerator(function* () {
-      const resp = yield __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__core_fetch__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_3__network_RestApi__["a" /* default */].buildUsageUrl(), {
+      const resp = yield __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__core_fetch__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_3__network_RestApi__["a" /* default */].buildReadmeUrl(), {
         method: 'get',
         timeout: 5000,
         headers: {
