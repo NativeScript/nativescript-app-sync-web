@@ -156,6 +156,10 @@ class RestApi {
     return `${this.baseURI}/README.md`;
   }
 
+  buildWebUsageUrl() {
+    return `${this.baseURI}/WEB_USAGE.md`;
+  }
+
   dealResponse(response) {
     var self = this;
     return response.text()
