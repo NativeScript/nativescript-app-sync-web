@@ -1,6 +1,6 @@
 {
-  "name": "codepush-web",
-  "version": "1.0.0",
+  "name": "nativescript-app-sync-web",
+  "version": "1.0.1",
   "private": true,
   "engines": {
     "node": ">=6.5",

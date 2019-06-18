@@ -29,7 +29,7 @@ export default {
     const data = await resp.text();
     const HomeContainer = await require.ensure([], require => require('../../containers/HomeContainer').default, 'home');
     return {
-      title: 'CodePushServer',
+      title: 'AppSync Server',
       chunk: 'home',
       component: <LayoutContainer><HomeContainer html={data} /></LayoutContainer>,
     };

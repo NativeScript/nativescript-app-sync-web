@@ -8,11 +8,11 @@ function Footer() {
   return (
     <footer className={s.root}>
       <div className={s.container}>
-        <span className={s.text}>© CodePush Server</span>
+        <span className={s.text}>© NativeScript AppSync</span>
         <span className={s.spacer}>·</span>
         <Link className={s.link} to="/">Home</Link>
         <span className={s.spacer}>·</span>
-        <a className={s.link} target="_blank" href="https://github.com/EddyVerbruggen/code-push-server/issues/new">Report an issue</a>
+        <a className={s.link} target="_blank" href="https://github.com/EddyVerbruggen/nativescript-app-sync-server/issues/new">Report an issue</a>
       </div>
     </footer>
   );

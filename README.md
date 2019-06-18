@@ -1,11 +1,11 @@
-# CodePush Web [source](https://github.com/EddyVerbruggen/code-push-web)
+# NativeScript APppSync Web [source](https://github.com/EddyVerbruggen/nativescript-app-sync-web)
 
-CodePush Web is a [CodePush Server](https://github.com/EddyVerbruggen/code-push-server)'s web client.
+AppSync Web is the [AppSync Server](https://github.com/EddyVerbruggen/nativescript-app-sync-server)'s web client.
 
 ## INSTALL
 
 ```shell
-$ cd /path/to/code-push-web
+$ cd /path/to/nativescript-app-sync-web
 $ npm install
 ```
 
@@ -24,7 +24,7 @@ $ npm start
 ## BUILD AND RUN your clone
 
 ```shell
-$ cd /path/to/code-push-web
+$ cd /path/to/nativescript-app-sync-web
 $ npm run build -- --release
 $ cd ./build
 $ npm install
@@ -34,7 +34,7 @@ $ node ./server.js
 ## BUILD AND RUN [IN PRODUCTION](https://nativescript-codepush-web.herokuapp.com)
 
 ```shell
-$ cd /path/to/code-push-web
+$ cd /path/to/nativescript-app-sync-web
 $ npm run build -- --release
 ```
 
@@ -47,4 +47,4 @@ I had to decide to not officially fork it because of fi. all the Chinese charact
 that were hardcoded and needed to be replaced by something I can read myself (English).
 
 ## License
-MIT License [read](https://github.com/EddyVerbruggen/code-push-web/blob/master/LICENSE.txt)
+MIT License [read](https://github.com/EddyVerbruggen/nativescript-app-sync-web/blob/master/LICENSE.txt)

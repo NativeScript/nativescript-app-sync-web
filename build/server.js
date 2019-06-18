@@ -1545,7 +1545,7 @@ function Footer() {
     className: __WEBPACK_IMPORTED_MODULE_2__Footer_css___default.a.container
   }, void 0, _jsx('span', {
     className: __WEBPACK_IMPORTED_MODULE_2__Footer_css___default.a.text
-  }, void 0, '\xA9 CodePush Server'), _jsx('span', {
+  }, void 0, '\xA9 NativeScript AppSync'), _jsx('span', {
     className: __WEBPACK_IMPORTED_MODULE_2__Footer_css___default.a.spacer
   }, void 0, '\xB7'), _jsx(__WEBPACK_IMPORTED_MODULE_3__Link__["a" /* default */], {
     className: __WEBPACK_IMPORTED_MODULE_2__Footer_css___default.a.link,
@@ -1555,7 +1555,7 @@ function Footer() {
   }, void 0, '\xB7'), _jsx('a', {
     className: __WEBPACK_IMPORTED_MODULE_2__Footer_css___default.a.link,
     target: '_blank',
-    href: 'https://github.com/EddyVerbruggen/code-push-server/issues/new'
+    href: 'https://github.com/EddyVerbruggen/nativescript-app-sync-server/issues/new'
   }, void 0, 'Report an issue')));
 }
 
@@ -1588,7 +1588,7 @@ var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" &
 
 
 
-var _ref = _jsx('span', {}, void 0, 'CodePush Server');
+var _ref = _jsx('span', {}, void 0, 'NativeScript AppSync');
 
 var _ref2 = _jsx(__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["Navbar"].Toggle, {});
 
@@ -5583,7 +5583,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         return __webpack_require__(57).default;
       }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
       return {
-        title: 'CodePushServer',
+        title: 'AppSync Server',
         chunk: 'home',
         component: _jsx(__WEBPACK_IMPORTED_MODULE_2__containers_LayoutContainer__["a" /* default */], {}, void 0, _jsx(HomeContainer, {
           html: data

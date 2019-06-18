@@ -27,7 +27,7 @@ class Header extends Component {
         <Navbar.Header>
           <Navbar.Brand>
           <Link className={s.brand} to="/">
-            <span>CodePush Server</span>
+            <span>NativeScript AppSync</span>
           </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
