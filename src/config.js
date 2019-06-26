@@ -2,7 +2,7 @@
 
 export const port = process.env.PORT || 3001;
 // export const host = process.env.WEBSITE_HOSTNAME || `localhost:${port}`;
-export const host = process.env.WEBSITE_HOSTNAME || 'https://nativescript-codepush-server.herokuapp.com';
+export const host = process.env.WEBSITE_HOSTNAME || 'https://appsync-server.nativescript.org';
 
 export const analytics = {
 
@@ -15,7 +15,7 @@ export const analytics = {
 
 export const common = {
   api: {
-    URL: 'https://nativescript-codepush-server.herokuapp.com', // production code-push-server address
-    devURL: 'https://nativescript-codepush-server.herokuapp.com', // development code-push-server address
+    URL: 'https://appsync-server.nativescript.org', // production code-push-server address
+    devURL: 'https://appsync-server.nativescript.org', // development code-push-server address
   },
 };

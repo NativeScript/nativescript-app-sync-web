@@ -31,7 +31,7 @@ $ npm install
 $ node ./server.js
 ```
 
-## BUILD AND RUN [IN PRODUCTION](https://nativescript-codepush-web.herokuapp.com)
+## BUILD AND RUN [IN PRODUCTION](https://appsync.nativescript.org)
 
 ```shell
 $ cd /path/to/nativescript-app-sync-web
