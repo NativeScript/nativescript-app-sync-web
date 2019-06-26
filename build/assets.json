@@ -1,0 +1,35 @@
+{
+  "home": {
+    "js": "/assets/home.d118410f.chunk.js"
+  },
+  "changePassword": {
+    "js": "/assets/changePassword.5d826793.chunk.js"
+  },
+  "register": {
+    "js": "/assets/register.6c44ee89.chunk.js"
+  },
+  "apps": {
+    "js": "/assets/apps.73888d72.chunk.js"
+  },
+  "product": {
+    "js": "/assets/product.ffb774ee.chunk.js"
+  },
+  "accessKeys": {
+    "js": "/assets/accessKeys.78c99043.chunk.js"
+  },
+  "deployment": {
+    "js": "/assets/deployment.5ab38774.chunk.js"
+  },
+  "login": {
+    "js": "/assets/login.c64e7c70.chunk.js"
+  },
+  "client": {
+    "js": "/assets/client.dbe30ab9.js"
+  },
+  "vendor": {
+    "js": "/assets/vendor.ce362661.js"
+  },
+  "": {
+    "png": "/assets/49d04bb9.png"
+  }
+}
