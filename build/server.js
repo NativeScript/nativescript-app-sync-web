@@ -1619,8 +1619,8 @@ Header.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_history_createBrowserHistory__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_history_createBrowserHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_history_createBrowserHistory__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_history__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_history___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_history__);
 /**
  * React Starter Kit (https://www.reactstarterkit.com/)
  *
@@ -1634,7 +1634,7 @@ Header.defaultProps = {
 
 // Navigation manager, e.g. history.push('/home')
 // https://github.com/mjackson/history
-/* harmony default export */ __webpack_exports__["a"] = (false && __WEBPACK_IMPORTED_MODULE_0_history_createBrowserHistory___default()());
+/* harmony default export */ __webpack_exports__["a"] = (false && __WEBPACK_IMPORTED_MODULE_0_history___default()());
 
 /***/ }),
 /* 23 */
@@ -6444,7 +6444,7 @@ module.exports = require("express");
 /* 114 */
 /***/ (function(module, exports) {
 
-module.exports = require("history/createBrowserHistory");
+module.exports = require("history");
 
 /***/ }),
 /* 115 */

@@ -226,6 +226,6 @@
     "serve": "babel-node tools/run runServer",
     "start": "babel-node tools/run start",
     "build:prod": "npm run build -- --release",
-    "start:prod": "cd ./build && npm i && node ./server.js"
+    "start:prod": "cd ./build && npm i && npm run start"
   }
 }
