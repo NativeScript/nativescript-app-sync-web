@@ -1619,8 +1619,6 @@ Header.defaultProps = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_history__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_history___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_history__);
 /**
  * React Starter Kit (https://www.reactstarterkit.com/)
  *
@@ -1630,11 +1628,11 @@ Header.defaultProps = {
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-
+const createBrowserHistory = __webpack_require__(114).createBrowserHistory;
 
 // Navigation manager, e.g. history.push('/home')
 // https://github.com/mjackson/history
-/* harmony default export */ __webpack_exports__["a"] = (false && __WEBPACK_IMPORTED_MODULE_0_history___default()());
+/* harmony default export */ __webpack_exports__["a"] = (false && createBrowserHistory());
 
 /***/ }),
 /* 23 */

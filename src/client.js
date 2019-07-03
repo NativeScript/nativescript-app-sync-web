@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 import FastClick from 'fastclick';
 import UniversalRouter from 'universal-router';
 import queryString from 'query-string';
-import { createPath } from 'history/PathUtils';
+// import { createPath } from 'history/PathUtils';
 import history from './core/history';
 import App from './components/App';
 import configureStore from './store/configureStore';
@@ -78,9 +78,9 @@ let onRenderComplete = function initialRenderComplete() {
 
     // Google Analytics tracking. Don't send 'pageview' event after
     // the initial rendering, as it was already sent
-    if (window.ga) {
-      window.ga('send', 'pageview', createPath(location));
-    }
+    // if (window.ga) {
+    //   window.ga('send', 'pageview', createPath(location));
+    // }
   };
 };
 
