@@ -18,7 +18,7 @@ $ vim ./src/config #change URL to production
 ## RUN DEV
 
 ```shell
-$ npm start <port to host the web app on>
+$ npm start
 ```
 
 ## BUILD AND RUN your clone
