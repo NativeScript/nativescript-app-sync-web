@@ -78,6 +78,9 @@ class StepOne extends Component {
         <FormGroup style={{ paddingTop: 28, textAlign: 'center' }}>
           <Link to="/login">Existing account</Link>
         </FormGroup>
+        <FormGroup>
+          <label style={{ fontWeight: 300 }}>This service is in BETA. By registering for this service, you agree with its <a href="https://github.com/EddyVerbruggen/nativescript-app-sync-web/blob/master/EULA.pdf" target="_blank">EULA</a>.</label>
+        </FormGroup>
       </Form>
     );
   }
