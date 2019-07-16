@@ -1,4 +1,4 @@
-# NativeScript APppSync Web [source](https://github.com/EddyVerbruggen/nativescript-app-sync-web)
+# NativeScript AppSync Web [source](https://github.com/EddyVerbruggen/nativescript-app-sync-web)
 
 AppSync Web is the [AppSync Server](https://github.com/EddyVerbruggen/nativescript-app-sync-server)'s web client.
 
@@ -18,7 +18,7 @@ $ vim ./src/config #change URL to production
 ## RUN DEV
 
 ```shell
-$ npm start
+$ npm start <port to host the web app on>
 ```
 
 ## BUILD AND RUN your clone
