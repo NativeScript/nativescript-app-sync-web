@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import _ from 'lodash';
 import * as usersActions from '../actions/usersActions';
 import * as routesActions from '../actions/routesActions';
 import Home from '../components/Home';
