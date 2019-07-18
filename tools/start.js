@@ -7,10 +7,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import browserSync from 'browser-sync';
+// import browserSync from 'browser-sync';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+// import webpackHotMiddleware from 'webpack-hot-middleware';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import run from './run';
 import runServer from './runServer';
@@ -51,6 +51,7 @@ async function start() {
     }
 
     const bundler = webpack(webpackConfig);
+    // eslint-disable-next-line no-unused-vars
     const wpMiddleware = webpackDevMiddleware(bundler, {
       // IMPORTANT: webpack middleware can't access config,
       // so we should provide publicPath by ourselves
@@ -62,25 +63,27 @@ async function start() {
       // For other settings see
       // https://webpack.github.io/docs/webpack-dev-middleware
     });
-    const hotMiddleware = webpackHotMiddleware(bundler.compilers[0]);
+    // const hotMiddleware = webpackHotMiddleware(bundler.compilers[0]);
 
     let handleBundleComplete = async () => {
       handleBundleComplete = stats => !stats.stats[1].compilation.errors.length && runServer();
 
+      // eslint-disable-next-line no-unused-vars
       const server = await runServer();
-      const bs = browserSync.create();
+      // const bs = browserSync.create();
 
-      bs.init({
-        ...isDebug ? {} : { notify: false, ui: false },
+      // bs.init({
+      //   ...isDebug ? {} : { notify: false, ui: false },
 
-        proxy: {
-          target: server.host,
-          middleware: [wpMiddleware, hotMiddleware],
-          proxyOptions: {
-            xfwd: true,
-          },
-        },
-      }, resolve);
+        // proxy: {
+        //   target: server.host,
+        //   middleware: [wpMiddleware, hotMiddleware],
+          // middleware: [wpMiddleware],
+          // proxyOptions: {
+          //   xfwd: true,
+          // },
+        // },
+      // }, resolve);
     };
 
     bundler.plugin('done', stats => handleBundleComplete(stats));
