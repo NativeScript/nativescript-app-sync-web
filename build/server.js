@@ -1833,12 +1833,13 @@ var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" &
 
 
 
+var _ref = _jsx(__WEBPACK_IMPORTED_MODULE_5__components_Home__["a" /* default */], {
+  html: '<h1>NativeScript AppSync service</h1>\n' + '<p>After <a href="./login">logging in</a>, you can...</p>\n' + '<h4><a href="./accessKeys">go here to get an access key</a></h4>\n' + '<h4><a href="./apps">or go here to manage your apps</a></h4>\n' + '<h1>Enjoy! 🚀</h1>'
+});
+
 class HomeContainer extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   render() {
-    const { html, actions } = this.props;
-    return _jsx(__WEBPACK_IMPORTED_MODULE_5__components_Home__["a" /* default */], {
-      html: html
-    });
+    return _ref;
   }
 }
 
@@ -5570,18 +5571,16 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
   path: '/',
 
   action() {
-    return _asyncToGenerator(function* () {
-      const data = '<h1 id="nativescriptappsyncservice">NativeScript AppSync service</h1>\n' + '<p>After <a href="./login">logging in</a>, you can...</p>\n' + '<h4 id="goheretogetanaccesskeyaccesskeys"><a href="./accessKeys">go here to get an access key</a></h4>\n' + '<h4 id="orgoheretomanageyourappsapps"><a href="./apps">or go here to manage your apps</a></h4>\n' + '<h1 id="enjoy">Enjoy! 🚀</h1>';
+    var _ref = _jsx(__WEBPACK_IMPORTED_MODULE_2__containers_LayoutContainer__["a" /* default */], {}, void 0, _jsx(HomeContainer, {}));
 
+    return _asyncToGenerator(function* () {
       const HomeContainer = yield new Promise(function(resolve) { resolve(); }).then((function (require) {
         return __webpack_require__(25).default;
       }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
       return {
         title: 'AppSync Server',
         chunk: 'home',
-        component: _jsx(__WEBPACK_IMPORTED_MODULE_2__containers_LayoutContainer__["a" /* default */], {}, void 0, _jsx(HomeContainer, {
-          html: data
-        }))
+        component: _ref
       };
     })();
   },

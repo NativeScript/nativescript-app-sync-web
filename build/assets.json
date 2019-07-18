@@ -3,7 +3,7 @@
     "js": "/assets/product.457a4976.chunk.js"
   },
   "home": {
-    "js": "/assets/home.c7b678ec.chunk.js"
+    "js": "/assets/home.1d6868fe.chunk.js"
   },
   "accessKeys": {
     "js": "/assets/accessKeys.5fd86b0e.chunk.js"
@@ -24,10 +24,10 @@
     "js": "/assets/login.ed5d89ab.chunk.js"
   },
   "client": {
-    "js": "/assets/client.a024a119.js"
+    "js": "/assets/client.7e0f210d.js"
   },
   "vendor": {
-    "js": "/assets/vendor.820a4b1c.js"
+    "js": "/assets/vendor.ff62413f.js"
   },
   "": {
     "png": "/assets/49d04bb9.png"

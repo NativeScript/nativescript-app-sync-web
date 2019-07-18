@@ -17,17 +17,11 @@ export default {
   path: '/',
 
   async action() {
-    const data = '<h1 id="nativescriptappsyncservice">NativeScript AppSync service</h1>\n' +
-      '<p>After <a href="./login">logging in</a>, you can...</p>\n' +
-      '<h4 id="goheretogetanaccesskeyaccesskeys"><a href="./accessKeys">go here to get an access key</a></h4>\n' +
-      '<h4 id="orgoheretomanageyourappsapps"><a href="./apps">or go here to manage your apps</a></h4>\n' +
-      '<h1 id="enjoy">Enjoy! 🚀</h1>';
-
     const HomeContainer = await require.ensure([], require => require('../../containers/HomeContainer').default, 'home');
     return {
       title: 'AppSync Server',
       chunk: 'home',
-      component: <LayoutContainer><HomeContainer html={data} /></LayoutContainer>,
+      component: <LayoutContainer><HomeContainer /></LayoutContainer>,
     };
   },
 
