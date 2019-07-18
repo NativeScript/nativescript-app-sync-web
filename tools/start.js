@@ -10,7 +10,7 @@
 // import browserSync from 'browser-sync';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
-// import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import run from './run';
 import runServer from './runServer';
@@ -63,13 +63,14 @@ async function start() {
       // For other settings see
       // https://webpack.github.io/docs/webpack-dev-middleware
     });
-    // const hotMiddleware = webpackHotMiddleware(bundler.compilers[0]);
+    const hotMiddleware = webpackHotMiddleware(bundler.compilers[0]);
 
     let handleBundleComplete = async () => {
       handleBundleComplete = stats => !stats.stats[1].compilation.errors.length && runServer();
 
       // eslint-disable-next-line no-unused-vars
       const server = await runServer();
+      resolve();
       // const bs = browserSync.create();
 
       // bs.init({

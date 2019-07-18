@@ -156,10 +156,8 @@ class RestApi {
     return `${this.baseURI}/README.md`;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   buildWebUsageUrl() {
-    // return `${this.baseURI}/WEB_USAGE.md`;
-    return 'https://appsync.nativescript.org/WEB_USAGE.md';
+    return `${this.baseURI}/WEB_USAGE.md`;
   }
 
   dealResponse(response) {
