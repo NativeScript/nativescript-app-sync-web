@@ -18,7 +18,7 @@ import webpackConfig from './webpack.config';
 import clean from './clean';
 import copy from './copy';
 
-const isDebug = false; // !process.argv.includes('--release');
+const isDebug = !process.argv.includes('--release');
 process.argv.push('--watch');
 
 const [clientConfig, serverConfig] = webpackConfig;
