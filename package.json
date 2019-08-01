@@ -160,7 +160,7 @@
       "css-modules"
     ],
     "globals": {
-      "__DEV__": true
+      "__DEV__": false
     },
     "env": {
       "browser": true
