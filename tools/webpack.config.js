@@ -222,6 +222,7 @@ const clientConfig = {
           warnings: isVerbose,
           unused: true,
           dead_code: true,
+          side_effects: false, // THIS LINE
         },
         mangle: {
           screw_ie8: true,
