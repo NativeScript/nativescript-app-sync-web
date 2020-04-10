@@ -89,7 +89,7 @@ class StepTwo extends Component {
       <Form style={{ maxWidth:350, marginLeft:"auto", marginRight: "auto" }}>
         <FormGroup>
           <Alert bsStyle="warning">
-            Check your verification code
+            Check your verification code (make sure to check your SPAM folder!)
           </Alert>
         </FormGroup>
         <FormGroup>

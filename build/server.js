@@ -4241,7 +4241,7 @@ var _ref = _jsx(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["Button"], {
 
 var _ref2 = _jsx(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["FormGroup"], {}, void 0, _jsx(__WEBPACK_IMPORTED_MODULE_2_react_bootstrap__["Alert"], {
   bsStyle: 'warning'
-}, void 0, 'Check your verification code'));
+}, void 0, 'Check your verification code (make sure to check your SPAM folder!)'));
 
 class StepTwo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
