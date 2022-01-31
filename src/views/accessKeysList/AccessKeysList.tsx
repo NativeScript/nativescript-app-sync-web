@@ -1,12 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react'
 import {
-  Box,
-  Container,
-  Typography,
+  Box, Button
 } from '@mui/material'
 import { Helmet } from 'react-helmet-async'
-import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,63 +12,58 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import * as api from 'src/api';
+import { AccessKey } from 'src/types/api';
 import Header from './components/Header';
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-) {
-  return {
-    name, calories, fat, carbs, protein
-  };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 function AccessKeysList() {
-  const [accessKeys, setAccessKeys] = useState()
+  const [accessKeys, setAccessKeys] = useState<AccessKey[]>([])
 
-  api.getApps().then(() => { }).catch(() => { })
+  const fetchAccessKeys = async () => {
+    const res = await api.getAccessKeys()
+    setAccessKeys(res.data?.accessKeys || [])
+  }
+
+  useEffect(() => {
+    fetchAccessKeys().then(() => { }).catch(() => { })
+  }, [])
+
+  const onDeleteKey = async (key: AccessKey) => {
+    await api.removeAccessKey(key.friendlyName)
+    await fetchAccessKeys()
+  }
 
   return (
     <Box p={3}>
       <Helmet>
         <title>Access Keys</title>
       </Helmet>
-      <Header />
+      <Header fetchAccessKeys={fetchAccessKeys} />
       <TableContainer component={Paper} sx={{ mt: 4 }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Created At</TableCell>
+              <TableCell>Created By</TableCell>
+              <TableCell>Expires</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {accessKeys?.map((row, i) => (
               <TableRow
-                key={row.name}
+                key={i}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.friendlyName}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell>{new Date(row.createdTime).toLocaleDateString()}</TableCell>
+                <TableCell>{row.createdBy}</TableCell>
+                <TableCell>{new Date(row.expires).toLocaleDateString()}</TableCell>
+                <TableCell>{row.description}</TableCell>
+                <TableCell><Button onClick={() => onDeleteKey(row)} variant="text" color="error">remove</Button></TableCell>
               </TableRow>
             ))}
           </TableBody>

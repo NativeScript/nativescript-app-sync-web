@@ -1,3 +1,4 @@
+import { AccessKey, App } from 'src/types/api'
 import { axios } from 'src/utils/axios'
 
 interface IApiResponseBase {
@@ -24,23 +25,27 @@ export const checkRegisterCodeExists = (email: string, code: string) => {
 
 // ACCESS KEYS
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface GetAccessKeysResponse extends IApiResponseBase { results: { tokens: string } }
+interface GetAccessKeysResponse extends IApiResponseBase { accessKeys: AccessKey[] }
+interface CreateAccessKeysResponse extends IApiResponseBase { accessKey: AccessKey }
 
-export const getAccessKeys = () => axios.get('/accessKeys')
-export const createAccessKey = (friendlyName = 'UI-user') => {
-  const time = (new Date()).getTime();
-  const createdBy = `Login-${time}`
-  const ttl = 30 * 2 * 24 * 60 * 60 * 1000;
+export const getAccessKeys = () => axios.get<GetAccessKeysResponse>('/accessKeys')
+export const createAccessKey = ({ name = '', ttl = 0, description = '' }) => {
+  const time = new Date().getTime()
+  const createdBy = 'UI'
+  const oneDayInMilliseconds = 86400000
+  const expiresIn = oneDayInMilliseconds * ttl
   const isSession = true;
-  return axios.post('/accessKeys', {
-    friendlyName, ttl, createdBy, isSession
+  const friendlyName = name || `UI-${time}`
+  return axios.post<CreateAccessKeysResponse>('/accessKeys', {
+    friendlyName, ttl: expiresIn, createdBy, isSession, description
   })
 }
-export const removeAccessKey = (name: string) => axios.delete(`/accessKeys/${encodeURI(name)}`)
+export const removeAccessKey = (name: string) => axios.delete<IApiResponseBase>(`/accessKeys/${encodeURI(name)}`)
 export const patchAccessKey = (name: string, friendlyName: string, ttl = 0) => axios.patch(`/accessKeys/${encodeURI(name)}`, { friendlyName, ttl })
 
 // APPS
-export const getApps = () => axios.get('/apps')
+interface GetAppsResponse extends IApiResponseBase { apps: App[] }
+export const getApps = () => axios.get<GetAppsResponse>('/apps')
 export const getDeployments = (appName: string) => axios.get(`/apps/${appName}/deployments`)
 export const addApp = (name: string, os: string, platform: string) => axios.post('/apps', { name, os, platform })
 

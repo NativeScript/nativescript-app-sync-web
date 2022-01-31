@@ -23,6 +23,7 @@ const NotFound = Loadable(lazy(() => import('src/views/error/NotFoundView')))
 const Login = Loadable(lazy(() => import('src/views/userLogin/Login')))
 const Register = Loadable(lazy(() => import('src/views/register/Register')))
 const AccessKeysList = Loadable(lazy(() => import('src/views/accessKeysList/AccessKeysList')))
+const AppList = Loadable(lazy(() => import('src/views/appList/AppList')))
 
 const routes: RouteObject[] = [
   {
@@ -60,6 +61,10 @@ const routes: RouteObject[] = [
       {
         path: '/accesskeylist',
         element: <AccessKeysList />
+      },
+      {
+        path: '/applist',
+        element: <AppList />
       }
     ]
   },

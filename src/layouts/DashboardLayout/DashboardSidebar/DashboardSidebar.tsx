@@ -35,7 +35,7 @@ const sections = [
       {
         title: 'Apps',
         icon: <AppIcon />,
-        path: '/apps'
+        path: '/applist'
       }
     ],
   },

@@ -9,7 +9,7 @@ const axiosInstance = Axios.create({
 axiosInstance.interceptors.request.use((config) => {
   const token = getToken()
   // eslint-disable-next-line no-param-reassign
-  if (token) { config.headers.Authorization = `Basic ${Buffer.from(`auth:${token}`).toString('base64')}` }
+  if (token) { config.headers.Authorization = `Bearer ${token}` }
   return config;
 });
 

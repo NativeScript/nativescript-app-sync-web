@@ -7,11 +7,11 @@ import CreateDialog from './CreateDialog'
 
 type HeaderProps = {
   sx?: SxProps<Theme>
-  fetchAccessKeys: () => {}
+  fetchApps: () => {}
 }
 
 function Header(props: HeaderProps) {
-  const { fetchAccessKeys, ...rest } = props
+  const { fetchApps, ...rest } = props
   const [createModal, setCreateModal] = useState(false)
 
   return (
@@ -22,7 +22,7 @@ function Header(props: HeaderProps) {
             Management
           </Typography>
           <Typography component="h1" variant="h4">
-            Access Keys
+            Apps
           </Typography>
         </Grid>
         <Grid item>
@@ -31,13 +31,13 @@ function Header(props: HeaderProps) {
             variant="contained"
             onClick={() => setCreateModal(true)}
           >
-            Create Access Key
+            Create App
           </Button>
         </Grid>
       </Grid>
       {createModal && (
         <CreateDialog onClose={() => {
-          fetchAccessKeys()
+          fetchApps()
           setCreateModal(false)
         }}
         />
