@@ -31,7 +31,6 @@ function AccessKeysList() {
   //   await api.removeApp(data.friendlyName)
   //   await fetchApps()
   // }
-
   return (
     <Box p={3}>
       <Helmet>
@@ -42,30 +41,28 @@ function AccessKeysList() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell>ID</TableCell>
               <TableCell>Name</TableCell>
-              <TableCell>Created At</TableCell>
-              <TableCell>Created By</TableCell>
-              <TableCell>Expires</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell />
+              <TableCell>OS</TableCell>
+              <TableCell>Platform</TableCell>
+              <TableCell>Deployments</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* {apps?.map((row, i) => (
+            {apps?.map((row, i) => (
               <TableRow
                 key={i}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
+                <TableCell>{row.id}</TableCell>
                 <TableCell component="th" scope="row">
-                  {row.friendlyName}
+                  {row.name}
                 </TableCell>
-                <TableCell>{new Date(row.createdTime).toLocaleDateString()}</TableCell>
-                <TableCell>{row.createdBy}</TableCell>
-                <TableCell>{new Date(row.expires).toLocaleDateString()}</TableCell>
-                <TableCell>{row.description}</TableCell>
-                <TableCell><Button onClick={() => {}} variant="text" color="error">remove</Button></TableCell>
+                <TableCell>{row.os}</TableCell>
+                <TableCell>{row.platform}</TableCell>
+                <TableCell>{row.deployments.join(', ')}</TableCell>
               </TableRow>
-            ))} */}
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

@@ -45,9 +45,10 @@ export const patchAccessKey = (name: string, friendlyName: string, ttl = 0) => a
 
 // APPS
 interface GetAppsResponse extends IApiResponseBase { apps: App[] }
+interface AddAppResponse extends IApiResponseBase { app: App }
 export const getApps = () => axios.get<GetAppsResponse>('/apps')
 export const getDeployments = (appName: string) => axios.get(`/apps/${appName}/deployments`)
-export const addApp = (name: string, os: string, platform: string) => axios.post('/apps', { name, os, platform })
+export const addApp = (name: string, os: string, platform: string) => axios.post<AddAppResponse>('/apps', { name, os, platform })
 
 // READMEs
 export const buildReadmeUrl = () => '/README.md' // TODO put this readme as markdown on the front end?

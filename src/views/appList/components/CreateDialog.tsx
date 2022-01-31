@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -9,11 +10,11 @@ import {
   DialogContentText, TextField, Typography
 } from '@mui/material';
 import { Box } from '@mui/system';
-import { createAccessKey } from 'src/api';
+import { addApp } from 'src/api';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 
 const RootDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -30,27 +31,23 @@ export interface CreateDialogProps {
 
 export default function CreateDialog(props: CreateDialogProps) {
   const [name, setName] = React.useState('')
-  const [description, setDescription] = React.useState('')
   const [OS, setOS] = React.useState('Android')
+  const [platform, setPlatform] = React.useState('NativeScript')
 
   const [accessKey, setAccessKey] = React.useState('')
   const [error, setError] = React.useState('')
   const { onClose } = props
 
-  const onGenerate = async () => {
+  const onCreate = async () => {
     try {
-      const { data } = await createAccessKey({ name, ttl: Number(OS), description })
-      if (data.accessKey) { return setAccessKey(data.accessKey.token) }
+      const { data } = await addApp(name, OS, platform)
+      console.log('🚀 ~ file: CreateDialog.tsx ~ line 43 ~ onGenerate ~ data', data)
       return setError(data.errorMessage)
     } catch (e) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       return setError((e?.message) as string)
     }
   }
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setOS(event.target.value);
-  };
 
   const renderForm = () => {
     if (!accessKey) {
@@ -70,12 +67,12 @@ export default function CreateDialog(props: CreateDialogProps) {
           </Box>
           <Box sx={{ maxWidth: 200, mt: 2 }}>
             <FormControl fullWidth>
-              <InputLabel id="Platform-label">Platform</InputLabel>
+              <InputLabel id="OS-label">OS</InputLabel>
               <Select
-                labelId="Platform-label"
+                labelId="OS-label"
                 value={OS}
                 label="OS"
-                onChange={handleChange}
+                onChange={(e) => setOS(e.target.value)}
               >
                 <MenuItem value="iOS">iOS</MenuItem>
                 <MenuItem value="Android">Android</MenuItem>
@@ -83,15 +80,19 @@ export default function CreateDialog(props: CreateDialogProps) {
               </Select>
             </FormControl>
           </Box>
-          <Box sx={{ minWidth: 120, mt: 2 }}>
+          <Box sx={{ maxWidth: 200, mt: 2 }}>
             <FormControl fullWidth>
-              <TextField
-                multiline
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Description"
-                minRows={5}
-              />
+              <InputLabel id="Platform-label">Platform</InputLabel>
+              <Select
+                labelId="Platform-label"
+                value={platform}
+                label="Platform"
+                onChange={(e) => setPlatform(e.target.value)}
+              >
+                <MenuItem value="NativeScript">NativeScript</MenuItem>
+                <MenuItem value="React-Native">React-Native</MenuItem>
+                <MenuItem value="Cordova">Cordova</MenuItem>
+              </Select>
             </FormControl>
           </Box>
           <Typography color="red">
@@ -138,9 +139,9 @@ export default function CreateDialog(props: CreateDialogProps) {
         {!accessKey && (
           <Button
             variant="contained"
-            onClick={onGenerate}
+            onClick={onCreate}
           >
-            Generate Key
+            Create
           </Button>
         )}
       </DialogActions>
