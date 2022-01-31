@@ -21,6 +21,7 @@ const Loadable = (Component) => function (props) {
 const NotFound = Loadable(lazy(() => import('src/views/error/NotFoundView')))
 // const ResetPassword = Loadable(lazy(() => import('src/views/passwordReset/ResetPassword')))
 const Login = Loadable(lazy(() => import('src/views/userLogin/Login')))
+const Register = Loadable(lazy(() => import('src/views/register/Register')))
 const AccessKeysList = Loadable(lazy(() => import('src/views/accessKeysList/AccessKeysList')))
 
 const routes: RouteObject[] = [
@@ -28,15 +29,21 @@ const routes: RouteObject[] = [
     path: '/login',
     element: (
       <GuestGuard>
-        <AuthLayout />
+        <AuthLayout>
+          <Login />
+        </AuthLayout>
       </GuestGuard>
-    ),
-    children: [
-      {
-        path: '/',
-        element: <Login />
-      },
-    ]
+    )
+  },
+  {
+    path: '/register',
+    element: (
+      <GuestGuard>
+        <AuthLayout>
+          <Register />
+        </AuthLayout>
+      </GuestGuard>
+    )
   },
   {
     path: '/',
@@ -48,10 +55,10 @@ const routes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <Navigate to="/accessKeys" replace />
+        element: <Navigate to="/accesskeylist" replace />
       },
       {
-        path: '/accessKeys',
+        path: '/accesskeylist',
         element: <AccessKeysList />
       }
     ]

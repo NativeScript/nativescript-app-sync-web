@@ -6,23 +6,18 @@ import {
   Box,
   Button,
   Drawer,
-  FormControlLabel,
   IconButton,
   SvgIcon,
-  Switch,
   TextField,
   Tooltip,
   Typography
 } from '@mui/material';
-import SettingsIcon from 'src/icons/Adjustments';
+import { Settings as SettingsIcon } from '@mui/icons-material';
 import useSettings from 'src/hooks/useSettings';
 import { THEMES } from 'src/theme';
 import { Settings as SettingsType } from 'src/contexts/SettingsContext';
 
 const getValues = (settings: SettingsType) => ({
-  compact: settings.compact,
-  responsiveFontSizes: settings.responsiveFontSizes,
-  roundedCorners: settings.roundedCorners,
   theme: settings.theme
 });
 
@@ -110,105 +105,6 @@ function Settings() {
               </option>
             ))}
           </TextField>
-        </Box>
-        <Box
-          sx={{
-            mt: 2,
-            px: 1.5
-          }}
-        >
-          <FormControlLabel
-            control={(
-              <Switch
-                checked={values.responsiveFontSizes}
-                color="primary"
-                edge="start"
-                name="direction"
-                onChange={(event): void => handleChange(
-                  'responsiveFontSizes',
-                  event.target.checked
-                )}
-              />
-            )}
-            label={(
-              <div>
-                Responsive font sizes
-                <Typography
-                  color="textSecondary"
-                  component="p"
-                  variant="caption"
-                >
-                  Adjust font for small devices
-                </Typography>
-              </div>
-            )}
-          />
-        </Box>
-        <Box
-          sx={{
-            mt: 2,
-            px: 1.5
-          }}
-        >
-          <FormControlLabel
-            control={(
-              <Switch
-                checked={values.compact}
-                color="primary"
-                edge="start"
-                name="compact"
-                onChange={(event): void => handleChange(
-                  'compact',
-                  event.target.checked
-                )}
-              />
-            )}
-            label={(
-              <div>
-                Compact
-                <Typography
-                  color="textSecondary"
-                  component="p"
-                  variant="caption"
-                >
-                  Fixed width on some screens
-                </Typography>
-              </div>
-            )}
-          />
-        </Box>
-        <Box
-          sx={{
-            mt: 2,
-            px: 1.5
-          }}
-        >
-          <FormControlLabel
-            control={(
-              <Switch
-                checked={values.roundedCorners}
-                color="primary"
-                edge="start"
-                name="roundedCorners"
-                onChange={(event): void => handleChange(
-                  'roundedCorners',
-                  event.target.checked
-                )}
-              />
-            )}
-            label={(
-              <div>
-                Rounded Corners
-                <Typography
-                  color="textSecondary"
-                  component="p"
-                  variant="caption"
-                >
-                  Increase border radius
-                </Typography>
-              </div>
-            )}
-          />
         </Box>
         <Box sx={{ mt: 3 }}>
           <Button

@@ -5,7 +5,7 @@ import {
   Box,
   Button, Collapse, ListItem
 } from '@mui/material'
-import { ChevronsDown as ChevronDownIcon, ChevronsRight as ChevronRightIcon } from 'react-feather';
+import { MenuOpen as ChevronDownIcon, ChevronRight as ChevronRightIcon } from '@mui/icons-material';
 
 interface NavItemProps {
   active?: boolean;

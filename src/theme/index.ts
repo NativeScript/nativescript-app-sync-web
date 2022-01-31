@@ -1,31 +1,20 @@
 import { mergeAll } from 'ramda';
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import type {
-  Direction, Theme, ThemeOptions
+  Theme, ThemeOptions
 } from '@mui/material';
 import { lightShadows, darkShadows } from './shadows';
 
 export const THEMES = {
   LIGHT: 'LIGHT',
-  DARK: 'DARK',
-  NATURE: 'NATURE'
+  DARK: 'DARK'
 }
 
 interface ThemeConfig {
-  direction?: Direction;
-  responsiveFontSizes?: boolean;
-  roundedCorners?: boolean;
-  theme?: string;
-}
-interface ThemeConfig {
-  direction?: Direction;
-  responsiveFontSizes?: boolean;
-  roundedCorners?: boolean;
   theme?: string;
 }
 
 const baseOptions: ThemeOptions = {
-  direction: 'ltr',
   components: {
     MuiAvatar: {
       styleOverrides: {
@@ -133,13 +122,6 @@ const baseOptions: ThemeOptions = {
 const themesOptions: Record<string, ThemeOptions> = {
   [THEMES.LIGHT]: {
     components: {
-      MuiAppBar: {
-        styleOverrides: {
-          root: {
-            backgroundColor: '#1E2C62 !important'
-          }
-        }
-      },
       MuiInputBase: {
         styleOverrides: {
           input: {
@@ -167,7 +149,11 @@ const themesOptions: Record<string, ThemeOptions> = {
       divider: 'rgba(145, 158, 171, 0.24)',
       primary: {
         contrastText: '#ffffff',
-        main: '#72BE7C'
+        main: '#65ADF1'
+      },
+      secondary: {
+        contrastText: '#ffffff',
+        main: '#1E293B'
       },
       success: {
         contrastText: '#ffffff',
@@ -223,46 +209,6 @@ const themesOptions: Record<string, ThemeOptions> = {
       }
     },
     shadows: darkShadows
-  },
-  [THEMES.NATURE]: {
-    components: {
-      MuiTableCell: {
-        styleOverrides: {
-          root: {
-            borderBottom: '1px solid rgba(145, 158, 171, 0.24)'
-          }
-        }
-      }
-    },
-    palette: {
-      background: {
-        default: '#1c2531',
-        paper: '#293142'
-      },
-      divider: 'rgba(145, 158, 171, 0.24)',
-      error: {
-        contrastText: '#ffffff',
-        main: '#f44336'
-      },
-      mode: 'dark',
-      primary: {
-        contrastText: '#ffffff',
-        main: '#01ab56'
-      },
-      success: {
-        contrastText: '#ffffff',
-        main: '#4caf50'
-      },
-      text: {
-        primary: '#ffffff',
-        secondary: '#919eab'
-      },
-      warning: {
-        contrastText: '#ffffff',
-        main: '#ff9800'
-      }
-    },
-    shadows: darkShadows
   }
 };
 
@@ -274,29 +220,12 @@ export const createCustomTheme = (config: ThemeConfig = {}): Theme => {
     themeOptions = themesOptions[THEMES.LIGHT];
   }
 
-  let theme = createTheme(
+  const theme = createTheme(
     mergeAll([
-      {},
       baseOptions,
       themeOptions,
-      {
-        ...(
-          config.roundedCorners && {
-            shape: {
-              borderRadius: 16
-            }
-          }
-        )
-      },
-      {
-        direction: config.direction
-      }
     ])
   );
-
-  if (config.responsiveFontSizes) {
-    theme = responsiveFontSizes(theme);
-  }
 
   theme.breakpoints.values = {
     xs: 0,

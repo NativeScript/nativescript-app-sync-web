@@ -4,7 +4,7 @@ interface LogoProps {
 }
 
 function Logo(props: LogoProps) {
-  return <img alt="Logo" height={40} src="/static/images/logo-white.png" {...props} />
+  return <img alt="Logo" height={40} src="/static/images/logo.svg" {...props} />
 }
 
 export default Logo

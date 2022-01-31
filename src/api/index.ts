@@ -1,19 +1,31 @@
 import { axios } from 'src/utils/axios'
 
+interface IApiResponseBase {
+  status?: 'OK' | 'ERROR'
+  errorMessage?: string
+}
+
 // AUTH
-export const login = (account: string, password: string) => axios.post<{ tokens: string }>('/auth/login', { account, password, minutes: 43200 })
+interface LoginResponse extends IApiResponseBase { results: { tokens: string } }
+
+export const login = (account: string, password: string) => axios.post<LoginResponse>('/auth/login', { account, password, minutes: 43200 })
 export const changePassword = (oldPassword: string, newPassword: string) => axios.patch('/users/password', { oldPassword, newPassword })
 
 // REGISTER
-export const register = (email: string, password: string, token: string) => axios.post('/users', { email, password, token })
-export const checkEmailExists = (email: string) => axios.get(`/users/exists?email=${encodeURI(email)}`)
-export const sendRegisterCode = (email: string) => axios.post('/users/registerCode', { email })
+interface CheckEmailExistsResponse extends IApiResponseBase { exists: boolean }
+
+export const register = (email: string, password: string, token: string) => axios.post<IApiResponseBase>('/users', { email, password, token })
+export const checkEmailExists = (email: string) => axios.get<CheckEmailExistsResponse>(`/users/exists?email=${encodeURI(email)}`)
+export const sendRegisterCode = (email: string) => axios.post<IApiResponseBase>('/users/registerCode', { email })
 export const checkRegisterCodeExists = (email: string, code: string) => {
   const query = `email=${encodeURI(email)}&token=${encodeURI(code)}`
-  return axios.get(`/users/registerCode/exists?${query}`)
+  return axios.get<IApiResponseBase>(`/users/registerCode/exists?${query}`)
 }
 
 // ACCESS KEYS
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface GetAccessKeysResponse extends IApiResponseBase { results: { tokens: string } }
+
 export const getAccessKeys = () => axios.get('/accessKeys')
 export const createAccessKey = (friendlyName = 'UI-user') => {
   const time = (new Date()).getTime();

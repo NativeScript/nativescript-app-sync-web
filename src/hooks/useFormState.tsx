@@ -86,7 +86,6 @@ export const useFormState = <T extends {}>(props?: FormStateProps<T>) => {
     if (!props?.schema) return
 
     const errors = validate(formState.values, props.schema) as { [Property in keyof T]: string[] }
-    console.log('🚀 ~ file: useFormState.tsx ~ line 89 ~ useEffect ~ errors', errors)
 
     setFormState((currentFormState) => ({
       ...currentFormState,

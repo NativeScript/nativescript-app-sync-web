@@ -11,8 +11,8 @@ import {
 } from '@mui/material'
 import {
   Key as KeyIcon,
-  List as ListIcon,
-} from 'react-feather'
+  Apps as AppIcon,
+} from '@mui/icons-material'
 import Logo from 'src/components/Logo'
 import Scrollbar from 'src/components/Scrollbar';
 import NavSection from './NavSection';
@@ -30,11 +30,11 @@ const sections = [
         title: 'Access Keys',
         adminRequired: false,
         icon: <KeyIcon />,
-        path: '/accessKeys'
+        path: '/accesskeylist'
       },
       {
         title: 'Apps',
-        icon: <ListIcon />,
+        icon: <AppIcon />,
         path: '/apps'
       }
     ],

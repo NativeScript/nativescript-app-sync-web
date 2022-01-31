@@ -10,7 +10,7 @@ function AuthGuard({ children }: AuthGuardProps) {
   const { isAuthenticated } = useAuth()
 
   if (!isAuthenticated) {
-    return <Navigate to="/auth/login" replace />
+    return <Navigate to="/login" replace />
   }
 
   // eslint-disable-next-line react/jsx-no-useless-fragment

@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import {
   Avatar,
@@ -67,9 +66,6 @@ function Account() {
         anchorEl={ref.current}
         open={isOpen}
       >
-        <MenuItem component={RouterLink} onClick={handleClose} to={`/user/${auth.user.id}`}>
-          Profile
-        </MenuItem>
         <MenuItem
           onClick={() => {
             handleLogout()

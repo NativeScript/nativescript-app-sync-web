@@ -10,9 +10,6 @@ import {
   TextField
 } from '@mui/material'
 
-import { useMutation } from '@apollo/client'
-import { FORGOT_PASSWORD } from 'src/apollo/queries'
-
 function ResetDialog({
   toggleResetPassword,
   open
@@ -21,37 +18,38 @@ function ResetDialog({
   open: boolean
 }) {
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState({
     type: '',
     message: ''
   })
 
-  const [forgotPassword, { loading }] = useMutation(FORGOT_PASSWORD)
   const onForgotPasswordSubmit = () => {
     if (!email) return
     setMessage({
       type: '',
       message: ''
     })
-
-    forgotPassword({
-      variables: {
-        email
-      }
-    })
-      .then(() => {
-        setMessage({
-          message: 'Success! If an account exists with this email, you will receive a reset link in your inbox',
-          type: 'success'
-        })
-        setEmail('')
-      })
-      .catch((e: Error) => {
-        setMessage({
-          message: e.message,
-          type: 'error'
-        })
-      })
+    setLoading(true)
+    // TODO implement forgot password
+    // forgotPassword({
+    //   variables: {
+    //     email
+    //   }
+    // })
+    //   .then(() => {
+    //     setMessage({
+    //       message: 'Success! If an account exists with this email, you will receive a reset link in your inbox',
+    //       type: 'success'
+    //     })
+    //     setEmail('')
+    //   })
+    //   .catch((e: Error) => {
+    //     setMessage({
+    //       message: e.message,
+    //       type: 'error'
+    //     })
+    //   })
   }
 
   const renderMessage = () => {

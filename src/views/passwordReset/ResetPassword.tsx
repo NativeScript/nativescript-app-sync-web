@@ -5,8 +5,6 @@ import {
 } from '@mui/material'
 import { Helmet } from 'react-helmet-async'
 import { useQueryParam } from 'src/hooks/useQueryParam'
-import { useMutation } from '@apollo/client'
-import { VALIDATE_RESET } from 'src/apollo/queries'
 import ResetPasswordForm from './ResetPasswordForm'
 
 const PREFIX = 'ResetPassword';
@@ -45,23 +43,24 @@ const Root = styled('div')(({ theme }) => ({
 function ResetPassword() {
   const { params: { e: email, p: passwordReset } } = useQueryParam()
   const [isValid, setIsValid] = useState<Boolean | null>(null)
-  const [isValidReset, { loading }] = useMutation(VALIDATE_RESET)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (!email || !passwordReset) setIsValid(false)
     else {
-      isValidReset({
-        variables: {
-          email,
-          passwordReset
-        }
-      })
-        .then(() => {
-          setIsValid(true)
-        })
-        .catch(() => {
-          setIsValid(false)
-        })
+      // TODO implement isValidReset
+      // isValidReset({
+      //   variables: {
+      //     email,
+      //     passwordReset
+      //   }
+      // })
+      //   .then(() => {
+      //     setIsValid(true)
+      //   })
+      //   .catch(() => {
+      //     setIsValid(false)
+      //   })
     }
   }, [])
 

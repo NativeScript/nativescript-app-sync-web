@@ -9,7 +9,7 @@ import {
   Toolbar,
   SvgIcon
 } from '@mui/material'
-import { Menu as MenuIcon } from 'react-feather'
+import { Menu as MenuIcon } from '@mui/icons-material'
 import Logo from 'src/components/Logo'
 import Settings from './Settings';
 import Account from './Account';

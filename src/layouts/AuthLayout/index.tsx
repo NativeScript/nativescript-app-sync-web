@@ -30,6 +30,7 @@ function Auth({ children }: AuthLayoutProps) {
     <Root>
       <Topbar />
       <main className={classes.content}>
+        {children}
         <Outlet />
       </main>
     </Root>

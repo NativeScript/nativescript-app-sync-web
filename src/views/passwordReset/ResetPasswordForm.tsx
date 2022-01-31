@@ -6,8 +6,6 @@ import {
 import { Box, SxProps } from '@mui/system'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import { useNavigate } from 'react-router';
-import { useMutation } from '@apollo/client'
-import { RESET_PASSWORD } from 'src/apollo/queries'
 import { useFormState } from 'src/hooks/useFormState'
 import PasswordStrength, { Rules } from 'src/components/PasswordStrength'
 import { all, propEq } from 'ramda'
@@ -75,8 +73,6 @@ function ResetPasswordForm(props: ResetPasswordFormProps) {
     }
   })
 
-  const [resetPassword] = useMutation(RESET_PASSWORD)
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setFormState({
@@ -84,20 +80,21 @@ function ResetPasswordForm(props: ResetPasswordFormProps) {
       isLoading: true
     })
     setMessage('')
-    try {
-      await resetPassword({
-        variables: {
-          password: formState.values.password,
-          passwordReset,
-          email
-        },
-        fetchPolicy: 'no-cache'
-      })
+    // TODO implement resetPassword
+    // try {
+    //   await resetPassword({
+    //     variables: {
+    //       password: formState.values.password,
+    //       passwordReset,
+    //       email
+    //     },
+    //     fetchPolicy: 'no-cache'
+    //   })
 
-      setShowSuccess(true)
-    } catch (e) {
-      setMessage('Unable to reset password')
-    }
+    //   setShowSuccess(true)
+    // } catch (e) {
+    //   setMessage('Unable to reset password')
+    // }
   }
 
   const setFormValidity = (rules: Rules) => {

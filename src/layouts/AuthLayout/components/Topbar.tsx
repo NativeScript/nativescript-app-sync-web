@@ -21,7 +21,7 @@ function Topbar(props: TopbarProps) {
       <Toolbar>
         <Link component={RouterLink} to="/" underline="none">
           <Typography variant="h4" color="white">
-            Nativescript OTA
+            Nativescript
           </Typography>
         </Link>
       </Toolbar>

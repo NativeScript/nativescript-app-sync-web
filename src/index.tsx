@@ -4,7 +4,7 @@
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async';
-import AdapterMoment from '@mui/lab/AdapterMoment';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { LocalizationProvider } from '@mui/lab';
 import { Toaster } from 'react-hot-toast';
 import { StyledEngineProvider } from '@mui/material'
@@ -59,7 +59,7 @@ ReactDOM.render(
   <ServiceWorkerProvider>
     <StyledEngineProvider injectFirst>
       <HelmetProvider>
-        <LocalizationProvider dateAdapter={AdapterMoment}>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
           <SettingsProvider>
             <AuthProvider>
               <Router>

@@ -6,7 +6,7 @@ import {
 } from 'react'
 import type { ReactNode } from 'react'
 import jwtDecode from 'jwt-decode'
-import { setTokens } from 'src/utils/auth'
+import { getToken, setTokens } from 'src/utils/auth'
 import type { User } from 'src/types/user'
 import * as api from 'src/api'
 
@@ -22,9 +22,8 @@ interface SignIn {
 }
 
 interface AuthContextValue extends AuthState {
-  login: (data: SignIn) => Promise<any>,
-  logout: () => void,
-  register: (email: string, name: string, password: string) => Promise<void>
+  login: (data: SignIn) => Promise<{ token: string }>,
+  logout: () => void
 }
 
 interface AuthProviderProps {
@@ -50,9 +49,8 @@ const isValidToken = (accessToken: string): boolean => {
 
 const AuthContext = createContext<AuthContextValue>({
   ...initialAuthState,
-  login: () => Promise.resolve(),
-  logout: () => { },
-  register: () => Promise.resolve()
+  login: () => Promise.resolve({ token: '' }),
+  logout: () => { }
 })
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -62,11 +60,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     user: null
   })
 
-  const login = async (data: SignIn) => {
-    const res = await api.login(data.email, data.password)
+  const login = async (p: SignIn) => {
+    const { data: { results, status } } = await api.login(p.email, p.password)
 
-    if (res.data.tokens) {
-      setTokens(res.data.tokens)
+    if (status === 'ERROR') { return null }
+
+    if (results.tokens) {
+      setTokens(results.tokens)
 
       const auth = {
         ...state,
@@ -75,10 +75,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
       }
 
       setState(auth)
-      return res
+      return { token: results.tokens }
     }
 
-    return res
+    return { token: results.tokens }
   }
 
   const logout = () => {
@@ -91,11 +91,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     })
   }
 
-  const register = async (_email: string, _name: string, _password: string) => { }
-
   useEffect(() => {
     const initialise = () => {
-      const accessToken = window.localStorage.getItem('token')
+      const accessToken = getToken()
 
       if (accessToken && isValidToken(accessToken)) {
         // TODO implement a getCurrentUser
@@ -126,6 +124,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
         //       isAuthenticated: false
         //     })
         //   })
+        setState({
+          ...state,
+          isInitialized: true,
+          isAuthenticated: true,
+          user: null
+        })
       } else {
         setState({
           ...state,
@@ -143,8 +147,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       value={{
         ...state,
         login,
-        logout,
-        register
+        logout
       }}
     >
       {children}

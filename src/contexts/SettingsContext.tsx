@@ -4,10 +4,6 @@ import type { ReactNode } from 'react';
 import { THEMES } from 'src/theme';
 
 export interface Settings {
-  compact?: boolean;
-  direction?: 'ltr' | 'rtl';
-  responsiveFontSizes?: boolean;
-  roundedCorners?: boolean;
   theme?: string;
 }
 
@@ -21,10 +17,6 @@ interface SettingsProviderProps {
 }
 
 const initialSettings: Settings = {
-  compact: true,
-  direction: 'ltr',
-  responsiveFontSizes: true,
-  roundedCorners: true,
   theme: THEMES.LIGHT
 };
 
@@ -38,10 +30,6 @@ export const restoreSettings = (): Settings | null => {
       settings = JSON.parse(storedData) as Settings;
     } else {
       settings = {
-        compact: true,
-        direction: 'ltr',
-        responsiveFontSizes: true,
-        roundedCorners: true,
         theme: window.matchMedia('(prefers-color-scheme: dark)').matches
           ? THEMES.DARK
           : THEMES.LIGHT
