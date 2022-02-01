@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import { Menu as MenuIcon } from '@mui/icons-material'
 import Logo from 'src/components/Logo'
-import Settings from './Settings';
+import ThemeSwitch from './ThemeSwitch';
 import Account from './Account';
 
 const PREFIX = 'TopBar';
@@ -93,7 +93,7 @@ function TopBar({ className, toggleMobileNav, ...rest }: TopBarProps) {
             </RouterLink>
           </Hidden>
           <Box flexGrow={5} />
-          <Settings />
+          <ThemeSwitch />
           <Account />
         </Toolbar>
       </AppBar>

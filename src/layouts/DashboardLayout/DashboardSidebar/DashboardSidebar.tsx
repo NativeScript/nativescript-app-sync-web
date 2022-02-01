@@ -24,7 +24,7 @@ interface NavBarProps {
 
 const sections = [
   {
-    title: 'Application',
+    title: 'AppSync',
     items: [
       {
         title: 'Access Keys',
