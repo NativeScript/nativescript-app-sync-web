@@ -10,6 +10,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import useAuth from 'src/hooks/useAuth'
 import type { SxProps } from '@mui/system'
 import { useFormState } from 'src/hooks/useFormState';
+import { ROUTES } from 'src/constants';
 import ResetDialog from './ResetDialog';
 
 type LoginFormProps = {
@@ -123,7 +124,7 @@ function LoginForm(props: LoginFormProps) {
         align="left"
         color="secondary"
         component={RouterLink}
-        to="/register"
+        to={ROUTES.REGISTER}
         underline="always"
         variant="subtitle2"
       >

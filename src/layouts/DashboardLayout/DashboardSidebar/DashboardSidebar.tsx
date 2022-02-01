@@ -15,6 +15,7 @@ import {
 } from '@mui/icons-material'
 import Logo from 'src/components/Logo'
 import Scrollbar from 'src/components/Scrollbar';
+import { ROUTES } from 'src/constants'
 import NavSection from './NavSection';
 
 interface NavBarProps {
@@ -30,12 +31,12 @@ const sections = [
         title: 'Access Keys',
         adminRequired: false,
         icon: <KeyIcon />,
-        path: '/accesskeylist'
+        path: ROUTES.ACCESS_KEYS_LIST
       },
       {
         title: 'Apps',
         icon: <AppIcon />,
-        path: '/applist'
+        path: ROUTES.APP_LIST
       }
     ],
   },

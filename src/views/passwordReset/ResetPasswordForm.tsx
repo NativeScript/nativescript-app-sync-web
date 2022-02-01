@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/require-await */
+// TODO have not implemented this page yet
 import { useState } from 'react'
 import { styled } from '@mui/material/styles';
 import {
@@ -9,6 +12,7 @@ import { useNavigate } from 'react-router';
 import { useFormState } from 'src/hooks/useFormState'
 import PasswordStrength, { Rules } from 'src/components/PasswordStrength'
 import { all, propEq } from 'ramda'
+import { ROUTES } from 'src/constants';
 
 const PREFIX = 'ResetPasswordForm';
 
@@ -163,7 +167,7 @@ function ResetPasswordForm(props: ResetPasswordFormProps) {
             </div>
             <div className={classes.successBtn}>
               <Button
-                onClick={() => navigate('/auth/login', { replace: true })}
+                onClick={() => navigate(ROUTES.LOGIN, { replace: true })}
                 type="button"
                 color="inherit"
               >

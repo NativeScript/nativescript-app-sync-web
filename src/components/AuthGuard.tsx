@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Navigate } from 'react-router-dom';
+import { ROUTES } from 'src/constants';
 import useAuth from '../hooks/useAuth'
 
 interface AuthGuardProps {
@@ -10,7 +11,7 @@ function AuthGuard({ children }: AuthGuardProps) {
   const { isAuthenticated } = useAuth()
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />
+    return <Navigate to={ROUTES.LOGIN} replace />
   }
 
   // eslint-disable-next-line react/jsx-no-useless-fragment

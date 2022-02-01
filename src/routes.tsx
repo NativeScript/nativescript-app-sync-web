@@ -9,6 +9,7 @@ import AuthLayout from 'src/layouts/AuthLayout'
 import LoadingScreen from 'src/components/LoadingScreen'
 import AuthGuard from 'src/components/AuthGuard'
 import GuestGuard from 'src/components/GuestGuard'
+import { ROUTES } from './constants'
 
 const Loadable = (Component) => function (props) {
   return (
@@ -27,7 +28,7 @@ const AppList = Loadable(lazy(() => import('src/views/appList/AppList')))
 
 const routes: RouteObject[] = [
   {
-    path: '/login',
+    path: ROUTES.LOGIN,
     element: (
       <GuestGuard>
         <AuthLayout>
@@ -37,7 +38,7 @@ const routes: RouteObject[] = [
     )
   },
   {
-    path: '/register',
+    path: ROUTES.REGISTER,
     element: (
       <GuestGuard>
         <AuthLayout>
@@ -56,14 +57,14 @@ const routes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <Navigate to="/accesskeylist" replace />
+        element: <Navigate to={ROUTES.ACCESS_KEYS_LIST} replace />
       },
       {
-        path: '/accesskeylist',
+        path: ROUTES.ACCESS_KEYS_LIST,
         element: <AccessKeysList />
       },
       {
-        path: '/applist',
+        path: ROUTES.APP_LIST,
         element: <AppList />
       }
     ]

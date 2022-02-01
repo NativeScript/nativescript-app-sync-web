@@ -5,6 +5,7 @@ import {
 import { useNavigate } from 'react-router';
 import useAuth from 'src/hooks/useAuth'
 import { useFormState } from 'src/hooks/useFormState';
+import { ROUTES } from 'src/constants';
 import StepOneEmail from './components/StepOneEmail';
 import StepTwoVerify from './components/StepTwoVerify';
 import StepThreePassword from './components/StepThreePassword';
@@ -62,7 +63,7 @@ function Register() {
       >
         {activeStep === 1 && <StepOneEmail form={registerForm} onSubmit={incrementStep} />}
         {activeStep === 2 && <StepTwoVerify form={registerForm} onSubmit={incrementStep} />}
-        {activeStep === 3 && <StepThreePassword form={registerForm} onSubmit={() => navigate('/login')} />}
+        {activeStep === 3 && <StepThreePassword form={registerForm} onSubmit={() => navigate(ROUTES.LOGIN)} />}
       </Box>
     </Box>
   );

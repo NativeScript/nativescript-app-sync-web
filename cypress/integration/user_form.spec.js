@@ -23,7 +23,7 @@ describe('adding and updating a user', () => {
       }
     })
 
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000/auth/login')
     cy.get('[name=email]').should('have.value', 'testinguseradmin')
     cy.get('button:contains("Sign in")').click()
     cy.wait(300); // wait for login and tokens to be set
