@@ -19,6 +19,14 @@ export type App = {
   name: string
 }
 
+export type Deployment = {
+  id: string
+  createdTime: number
+  key: string
+  name: string
+  package: string
+}
+
 export type AppError = {
   errorMessage: string
 }

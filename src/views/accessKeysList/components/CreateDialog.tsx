@@ -81,7 +81,7 @@ export default function CreateDialog(props: CreateDialogProps) {
                 <MenuItem value={60}>60 Days</MenuItem>
                 <MenuItem value={90}>90 Days</MenuItem>
                 <MenuItem value={365}>1 Year</MenuItem>
-                <MenuItem value={2000}>Never (Not Recommended)</MenuItem>
+                <MenuItem value={1825}>5 Years</MenuItem>
               </Select>
             </FormControl>
           </Box>

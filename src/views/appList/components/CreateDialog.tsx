@@ -41,7 +41,7 @@ export default function CreateDialog(props: CreateDialogProps) {
   const onCreate = async () => {
     try {
       const { data } = await addApp(name, OS, platform)
-      console.log('🚀 ~ file: CreateDialog.tsx ~ line 43 ~ onGenerate ~ data', data)
+      if (!data.errorMessage) { return onClose() }
       return setError(data.errorMessage)
     } catch (e) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access

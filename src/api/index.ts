@@ -1,4 +1,4 @@
-import { AccessKey, App } from 'src/types/api'
+import { AccessKey, App, Deployment } from 'src/types/api'
 import { axios } from 'src/utils/axios'
 
 interface IApiResponseBase {
@@ -46,9 +46,12 @@ export const patchAccessKey = (name: string, friendlyName: string, ttl = 0) => a
 // APPS
 interface GetAppsResponse extends IApiResponseBase { apps: App[] }
 interface AddAppResponse extends IApiResponseBase { app: App }
+interface GetDeploymentsResponse extends IApiResponseBase { deployments: Deployment[] }
+
 export const getApps = () => axios.get<GetAppsResponse>('/apps')
-export const getDeployments = (appName: string) => axios.get(`/apps/${appName}/deployments`)
+export const getDeployments = (appName: string) => axios.get<GetDeploymentsResponse>(`/apps/${appName}/deployments`)
 export const addApp = (name: string, os: string, platform: string) => axios.post<AddAppResponse>('/apps', { name, os, platform })
+export const removeApp = (name: string) => axios.delete<IApiResponseBase>(`/apps/${encodeURI(name)}`)
 
 // READMEs
 export const buildReadmeUrl = () => '/README.md' // TODO put this readme as markdown on the front end?

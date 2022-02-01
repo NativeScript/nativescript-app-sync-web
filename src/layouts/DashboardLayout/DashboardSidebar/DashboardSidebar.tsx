@@ -28,15 +28,15 @@ const sections = [
     title: 'AppSync',
     items: [
       {
+        title: 'Apps',
+        icon: <AppIcon />,
+        path: ROUTES.APP_LIST
+      },
+      {
         title: 'Access Keys',
         adminRequired: false,
         icon: <KeyIcon />,
         path: ROUTES.ACCESS_KEYS_LIST
-      },
-      {
-        title: 'Apps',
-        icon: <AppIcon />,
-        path: ROUTES.APP_LIST
       }
     ],
   },
