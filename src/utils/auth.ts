@@ -15,14 +15,14 @@ interface decodeJwtResult {
 
 export const isLoggedIn = () => {
   // const token = getSecureStorage('dca-t')
-  const refreshToken = sessionStorage.getItem(TOKEN)
+  const token = sessionStorage.getItem(TOKEN)
   // if (!token || !refreshToken)
-  if (!refreshToken) {
+  if (!token) {
     return false
   }
 
   // const decodedToken = decodeJwt(token) as any
-  const decodedRefreshToken = decodeJwt<decodeJwtResult>(refreshToken)
+  const decodedRefreshToken = decodeJwt<decodeJwtResult>(token)
 
   // const tokenTime = moment(decodedToken.exp).utc()
 
