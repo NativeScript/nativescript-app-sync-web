@@ -2,7 +2,7 @@ import Axios from 'axios'
 import { getToken } from './auth';
 
 const axiosInstance = Axios.create({
-  baseURL: process.env.API_URL || 'http://localhost:5000',
+  baseURL: process.env.REACT_APP_API_URL || process.env.API_URL || 'http://localhost:5000',
   timeout: 1000
 });
 
