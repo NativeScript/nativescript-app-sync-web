@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
-import { styled } from '@mui/material/styles';
 import { Box, Button, Typography } from '@mui/material';
-import { useFormState } from 'src/hooks/useFormState';
-import { pathOr } from 'ramda';
 import { App, Deployment } from 'src/types/api';
 import * as api from 'src/api';
 import { Apps as AppIcon } from '@mui/icons-material'
@@ -19,7 +16,7 @@ function AppDetails({ app, onDelete }: AppDetailsProps) {
   useEffect(() => {
     api.getDeployments(app.name).then((t) => {
       setDeployments(t.data.deployments || [])
-    }).catch((e) => console.log(e))
+    }).catch(() => {})
   }, [app])
 
   const renderDeployments = () => deployments.map((d, i) => (

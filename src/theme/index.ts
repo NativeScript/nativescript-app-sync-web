@@ -216,7 +216,6 @@ export const createCustomTheme = (config: ThemeConfig = {}): Theme => {
   let themeOptions = themesOptions[config.theme];
 
   if (!themeOptions) {
-    console.warn(new Error(`The theme ${config.theme} is not valid`));
     themeOptions = themesOptions[THEMES.LIGHT];
   }
 

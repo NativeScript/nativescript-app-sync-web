@@ -11,6 +11,7 @@ import AuthGuard from 'src/components/AuthGuard'
 import GuestGuard from 'src/components/GuestGuard'
 import { ROUTES } from './constants'
 
+// eslint-disable-next-line func-names
 const Loadable = (Component) => function (props) {
   return (
     <Suspense fallback={<LoadingScreen />}>

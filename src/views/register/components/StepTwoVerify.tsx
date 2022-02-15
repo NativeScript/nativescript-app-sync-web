@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import {
   Button, TextField, Box, Typography
 } from '@mui/material'
@@ -19,13 +20,15 @@ function StepTwoVerify(props: StepTwoVerifyProps) {
   const handleSubmit = async () => {
     const { email, ackCode } = formState.values
     setError('')
-    const { data } = await checkRegisterCodeExists(email, ackCode)
-
-    if (data.status === 'OK') {
-      return onSubmit()
+    try {
+      const { data } = await checkRegisterCodeExists(email, ackCode)
+      if (data.status === 'OK') {
+        onSubmit()
+      }
+    } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      setError(error?.message || 'Invalid code')
     }
-
-    return setError('Invalid code')
   }
 
   return (
