@@ -5,8 +5,7 @@ import {
   useState
 } from 'react'
 import type { ReactNode } from 'react'
-import jwtDecode from 'jwt-decode'
-import { getToken, setTokens } from 'src/utils/auth'
+import { isLoggedIn, setToken } from 'src/utils/auth'
 import type { User } from 'src/types/user'
 import * as api from 'src/api'
 
@@ -36,17 +35,6 @@ const initialAuthState: AuthState = {
   user: null
 }
 
-const isValidToken = (accessToken: string): boolean => {
-  if (!accessToken) {
-    return false
-  }
-
-  const decoded = jwtDecode<{ exp: number }>(accessToken)
-  const currentTime = Date.now() / 1000
-
-  return decoded.exp > currentTime
-}
-
 const AuthContext = createContext<AuthContextValue>({
   ...initialAuthState,
   login: () => Promise.resolve({ token: '' }),
@@ -66,7 +54,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (status === 'ERROR') { return null }
 
     if (results.tokens) {
-      setTokens(results.tokens)
+      setToken(results.tokens)
 
       const auth = {
         ...state,
@@ -82,7 +70,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   const logout = () => {
-    setTokens('')
+    setToken('')
     setState({
       ...state,
       isInitialized: true,
@@ -92,54 +80,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   useEffect(() => {
-    const initialise = () => {
-      const accessToken = getToken()
-
-      if (accessToken && isValidToken(accessToken)) {
-        // TODO implement a getCurrentUser
-        // client.query<GetCurrentUserQuery>({
-        //   query: QUERY_GET_CURRENT_USER,
-        //   fetchPolicy: 'no-cache'
-        // }).then((t) => {
-        //   // Token most likely valid but not for the server
-        //   if (!t.data.getCurrentUser) {
-        //     setState({
-        //       ...state,
-        //       isInitialized: true,
-        //       isAuthenticated: false
-        //     })
-        //   } else {
-        //     setState({
-        //       ...state,
-        //       isInitialized: true,
-        //       isAuthenticated: true,
-        //       user: t.data.getCurrentUser
-        //     })
-        //   }
-        // })
-        //   .catch(() => {
-        //     setState({
-        //       ...state,
-        //       isInitialized: true,
-        //       isAuthenticated: false
-        //     })
-        //   })
+    const isValidLogin = isLoggedIn()
+    if (isValidLogin) {
+      api.authenticated().then((t) => {
         setState({
           ...state,
           isInitialized: true,
-          isAuthenticated: true,
+          isAuthenticated: Boolean(t.data?.authenticated),
+          user: t.data?.user
+        })
+      })
+        .catch(() => setState({
+          ...state,
+          isInitialized: true,
+          isAuthenticated: false,
           user: null
-        })
-      } else {
-        setState({
-          ...state,
-          isInitialized: true,
-          isAuthenticated: false
-        })
-      }
+        }))
+    } else {
+      setState({
+        ...state,
+        isInitialized: true,
+        isAuthenticated: false
+      })
     }
-
-    initialise()
   }, [])
 
   return (

@@ -8,6 +8,7 @@ import {
   Divider,
   Drawer,
   Link,
+  Typography,
 } from '@mui/material'
 import {
   Key as KeyIcon,
@@ -16,6 +17,7 @@ import {
 import Logo from 'src/components/Logo'
 import Scrollbar from 'src/components/Scrollbar';
 import { ROUTES } from 'src/constants'
+import useAuth from 'src/hooks/useAuth'
 import NavSection from './NavSection';
 
 interface NavBarProps {
@@ -44,7 +46,7 @@ const sections = [
 
 function NavBar({ onMobileClose, openMobile }: NavBarProps) {
   const location = useLocation();
-
+  const auth = useAuth()
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
@@ -76,6 +78,11 @@ function NavBar({ onMobileClose, openMobile }: NavBarProps) {
               }}
             />
           </Box>
+          {auth.user && (
+            <Box mt={1} display="flex" justifyContent="center">
+              <Typography noWrap>{auth.user?.email.substring(0, 28)}</Typography>
+            </Box>
+          )}
           <Box mt={2} textAlign="center">
             <Link
               component={RouterLink}

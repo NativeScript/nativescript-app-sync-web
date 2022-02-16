@@ -3,7 +3,7 @@ import { fromUnixTime, isBefore } from 'date-fns'
 
 export const TOKEN = 'auth'
 
-export const setTokens = (token: string) => {
+export const setToken = (token: string) => {
   sessionStorage.setItem(TOKEN, token)
 }
 
@@ -14,9 +14,7 @@ interface decodeJwtResult {
 }
 
 export const isLoggedIn = () => {
-  // const token = getSecureStorage('dca-t')
   const token = sessionStorage.getItem(TOKEN)
-  // if (!token || !refreshToken)
   if (!token) {
     return false
   }

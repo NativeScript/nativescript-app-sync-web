@@ -8,9 +8,11 @@ interface IApiResponseBase {
 
 // AUTH
 interface LoginResponse extends IApiResponseBase { results: { tokens: string } }
+interface AuthenticatedResponse extends IApiResponseBase { authenticated: boolean, user: { email: string, username: string, id: number } }
 
 export const login = (account: string, password: string) => axios.post<LoginResponse>('/auth/login', { account, password, minutes: 43200 })
 export const changePassword = (oldPassword: string, newPassword: string) => axios.patch('/users/password', { oldPassword, newPassword })
+export const authenticated = () => axios.get<AuthenticatedResponse>('/authenticated')
 
 // REGISTER
 interface CheckEmailExistsResponse extends IApiResponseBase { exists: boolean }

@@ -4,6 +4,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { App, Deployment } from 'src/types/api';
 import * as api from 'src/api';
 import { Apps as AppIcon } from '@mui/icons-material'
+import ConfirmDelete from 'src/components/ConfirmDelete';
 
 interface AppDetailsProps {
   app: App
@@ -16,7 +17,7 @@ function AppDetails({ app, onDelete }: AppDetailsProps) {
   useEffect(() => {
     api.getDeployments(app.name).then((t) => {
       setDeployments(t.data.deployments || [])
-    }).catch(() => {})
+    }).catch(() => { })
   }, [app])
 
   const renderDeployments = () => deployments.map((d, i) => (
@@ -52,7 +53,7 @@ function AppDetails({ app, onDelete }: AppDetailsProps) {
         </Box>
       </Box>
       <Box m={2}>
-        <Button color="error" onClick={onDelete} variant="outlined">Delete</Button>
+        <ConfirmDelete onDelete={onDelete} confirmText={app.name} />
       </Box>
     </Box>
   );
