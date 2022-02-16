@@ -46,12 +46,41 @@ export const removeAccessKey = (name: string) => axios.delete<IApiResponseBase>(
 export const patchAccessKey = (name: string, friendlyName: string, ttl = 0) => axios.patch(`/accessKeys/${encodeURI(name)}`, { friendlyName, ttl })
 
 // APPS
+type DeploymentType = 'Staging' | 'Production'
+type ReleaseMethod = 'Upload' | 'Promote' | 'Rollback'
+type DiffPackageMap = {
+  [key: string]: {
+    url: string
+    size: number
+  };
+}
+export interface DeploymentHistory {
+  description: string
+  isDisabled: boolean
+  isMandatory: boolean
+  rollout: number
+  appVersion: string
+  packageHash: string
+  blobUrl: string
+  size: number
+  manifestBlobUrl: string
+  diffPackageMap: DiffPackageMap | null
+  releaseMethod: ReleaseMethod
+  uploadTime: number
+  originalLabel: string
+  originalDeployment: string
+  label: string
+  releasedBy: string
+}
+
 interface GetAppsResponse extends IApiResponseBase { apps: App[] }
 interface AddAppResponse extends IApiResponseBase { app: App }
 interface GetDeploymentsResponse extends IApiResponseBase { deployments: Deployment[] }
+interface GetDeploymentHistoryResponse extends IApiResponseBase { history: DeploymentHistory[] }
 
 export const getApps = () => axios.get<GetAppsResponse>('/apps')
 export const getDeployments = (appName: string) => axios.get<GetDeploymentsResponse>(`/apps/${appName}/deployments`)
+export const getDeploymentHistory = (appName: string, deploymentName: DeploymentType) => axios.get<GetDeploymentHistoryResponse>(`/apps/${appName}/deployments/${deploymentName}/history`)
 export const addApp = (name: string, os: string, platform: string) => axios.post<AddAppResponse>('/apps', { name, os, platform })
 export const removeApp = (name: string) => axios.delete<IApiResponseBase>(`/apps/${encodeURI(name)}`)
 
