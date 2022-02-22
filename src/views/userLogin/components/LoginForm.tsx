@@ -11,6 +11,7 @@ import useAuth from 'src/hooks/useAuth'
 import type { SxProps } from '@mui/system'
 import { useFormState } from 'src/hooks/useFormState';
 import { ROUTES } from 'src/constants';
+import { Google } from '@mui/icons-material';
 import ResetDialog from './ResetDialog';
 
 type LoginFormProps = {
@@ -52,7 +53,9 @@ function LoginForm(props: LoginFormProps) {
 
   const toggleResetPassword = () => setOpen(!open)
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!formState.isValid) { return }
     setMessage('')
 
     setFormState({
@@ -61,66 +64,84 @@ function LoginForm(props: LoginFormProps) {
     })
 
     const res = await login({ email: formState.values.email, password: formState.values.password })
-    if (!res) { return setMessage('Invalid Username/Password') }
-    setFormState({
-      ...formState,
-      isLoading: false
-    })
-    return navigate('/', { replace: true })
+    if (!res) {
+      setMessage('Invalid Username/Password')
+    } else {
+      setFormState({
+        ...formState,
+        isLoading: false
+      })
+      navigate('/', { replace: true })
+    }
   }
 
   return (
-    <CardContent {...rest} onSubmit={handleSubmit}>
+    <CardContent {...rest}>
       <Typography gutterBottom variant="h4">
         Sign in
       </Typography>
       <Typography color="error" gutterBottom>
         {message}
       </Typography>
-      <Box>
-        <TextField
-          sx={{ m: 1 }}
-          error={hasError('email')}
-          fullWidth
-          helperText={hasError('email') ? formState.errors.email[0] : null}
-          autoComplete="username"
-          label="Email address"
-          name="email"
-          onChange={handleChange}
-          value={formState.values.email || ''}
-          variant="outlined"
-        />
-        <TextField
-          sx={{ m: 1 }}
-          error={hasError('password')}
-          fullWidth
-          helperText={hasError('password') ? formState.errors.password[0] : null}
-          autoComplete="password"
-          label="Password"
-          name="password"
-          onChange={handleChange}
-          type="password"
-          value={formState.values.password || ''}
-          variant="outlined"
-        />
-      </Box>
+      <form onSubmit={handleSubmit}>
+        <Box>
+          <TextField
+            sx={{ m: 1 }}
+            error={hasError('email')}
+            fullWidth
+            helperText={hasError('email') ? formState.errors.email[0] : null}
+            autoComplete="username"
+            label="Email address"
+            name="email"
+            onChange={handleChange}
+            value={formState.values.email || ''}
+            variant="outlined"
+          />
+          <TextField
+            sx={{ m: 1 }}
+            error={hasError('password')}
+            fullWidth
+            helperText={hasError('password') ? formState.errors.password[0] : null}
+            autoComplete="password"
+            label="Password"
+            name="password"
+            onChange={handleChange}
+            type="password"
+            value={formState.values.password || ''}
+            variant="outlined"
+          />
+
+        </Box>
+        <Button
+          sx={{
+            mt: 2,
+            width: '100%'
+          }}
+          color="secondary"
+          disabled={!formState.isValid}
+          size="large"
+          type="submit"
+          variant="contained"
+        >
+          Sign in
+        </Button>
+      </form>
+      <Divider />
       <Button
+        startIcon={<Google />}
         sx={{
           mt: 2,
           width: '100%'
         }}
-        onClick={handleSubmit}
         color="secondary"
-        disabled={!formState.isValid}
+        disabled
         size="large"
-        type="submit"
-        variant="contained"
+        variant="outlined"
       >
-        Sign in
+        Google
       </Button>
-      <Divider sx={{ m: 2 }} />
-
       <Link
+        sx={{ mt: 1 }}
         align="left"
         color="secondary"
         component={RouterLink}
