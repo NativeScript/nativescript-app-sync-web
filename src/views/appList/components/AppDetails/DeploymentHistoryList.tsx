@@ -1,6 +1,8 @@
 import { Box, Theme } from '@mui/material';
 import { SxProps } from '@mui/system';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import {
+  DataGrid, GridColDef, GridRenderCellParams, GridValueGetterParams
+} from '@mui/x-data-grid';
 import * as api from 'src/api';
 import bytesToSize from 'src/utils/bytesToSize';
 
@@ -25,10 +27,22 @@ function DeploymentHistory(props: DeploymentHistoryProps) {
       valueGetter: (params: GridValueGetterParams) => bytesToSize((params.row as api.DeploymentHistory).size)
     },
     { field: 'description', headerName: 'Description', width: 130 },
-    { field: 'releasedBy', headerName: 'Released By', width: 130 },
-    { field: 'packageHash', headerName: 'Package Hash', width: 130 },
-    { field: 'blobUrl', headerName: 'Blob Url', width: 130 },
-    { field: 'manifestBlobUrl', headerName: 'Manifest Blob Url', width: 130 },
+    { field: 'releasedBy', headerName: 'Released By', width: 175 },
+    {
+      field: 'packageHash', headerName: 'Package Hash'
+    },
+    {
+      field: 'blobUrl',
+      headerName: 'Blob Url',
+      width: 130,
+      renderCell: (params: GridRenderCellParams) => <a target="_blank" rel="noreferrer" href={(params.row as api.DeploymentHistory).blobUrl}>download</a>
+    },
+    {
+      field: 'manifestBlobUrl',
+      headerName: 'Manifest Blob Url',
+      width: 130,
+      renderCell: (params: GridRenderCellParams) => <a target="_blank" rel="noreferrer" href={(params.row as api.DeploymentHistory).manifestBlobUrl}>download</a>
+    },
   ];
 
   return (
