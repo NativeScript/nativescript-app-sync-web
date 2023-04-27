@@ -48,7 +48,7 @@ function Register() {
         <Typography gutterBottom variant="h4">
           Register
         </Typography>
-        <Stepper activeStep={activeStep} alternativeLabel sx={{ mt: 5 }}>
+        <Stepper activeStep={activeStep - 1} alternativeLabel sx={{ mt: 5 }}>
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
